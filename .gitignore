@@ -1,0 +1,13 @@
+*.o
+*.obj
+Debug/
+Release/
+*.sdf
+*.opensdf
+*.filters
+*.suo
+*.user
+ipch/
+*.exe
+lib*.a
+*.lib
