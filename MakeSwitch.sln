@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Program", "MakeSwitch.vcxproj", "{11AE7B8F-89DF-4195-B323-0BB807E1607C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tester", "Tester.vcxproj", "{162628EE-0BCE-4317-A875-5E1189E0EAE8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11AE7B8F-89DF-4195-B323-0BB807E1607C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{11AE7B8F-89DF-4195-B323-0BB807E1607C}.Debug|Win32.Build.0 = Debug|Win32
+		{11AE7B8F-89DF-4195-B323-0BB807E1607C}.Release|Win32.ActiveCfg = Release|Win32
+		{11AE7B8F-89DF-4195-B323-0BB807E1607C}.Release|Win32.Build.0 = Release|Win32
+		{162628EE-0BCE-4317-A875-5E1189E0EAE8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{162628EE-0BCE-4317-A875-5E1189E0EAE8}.Debug|Win32.Build.0 = Debug|Win32
+		{162628EE-0BCE-4317-A875-5E1189E0EAE8}.Release|Win32.ActiveCfg = Release|Win32
+		{162628EE-0BCE-4317-A875-5E1189E0EAE8}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

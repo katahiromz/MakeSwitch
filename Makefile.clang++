@@ -1,0 +1,68 @@
+############################################################################
+## Makefile.clang++
+## Copyright (C) 2015 Katayama Hirofumi MZ.  All rights reserved.
+############################################################################
+# Usage: make -f Makefile.clang++
+
+DOTOBJ = .o
+DOTEXE = 
+CURDIR = ./
+
+CXX = clang++
+
+CXXFLAGS = -std=c++11 -m32 -D_DEBUG -O0 -g -ggdb -static -Wall -pedantic     # x86 (Debug)
+#CXXFLAGS = -std=c++11 -m64 -D_DEBUG -O0 -g -ggdb -static -Wall -pedantic    # x64 (Debug)
+
+#CXXFLAGS = -std=c++11 -m32 -DNDEBUG -O2 -static -Wall -pedantic             # x86 (Release)
+#CXXFLAGS = -std=c++11 -m64 -DNDEBUG -O2 -static -Wall -pedantic             # x64 (Release)
+
+PROGRAM = MakeSwitch$(DOTEXE)
+PROGRAM_OBJS = Program$(DOTOBJ)
+PROGRAM_LIBS = libMakeSwitch.a
+
+TEST_PROGRAM = Tester$(DOTEXE)
+TEST_OBJS = Tester$(DOTOBJ)
+TEST_LIBS = libMakeSwitch.a
+
+LIBRARY = libMakeSwitch.a
+LIBRARY_OBJS = MakeSwitch$(DOTOBJ)
+
+all: library test prog
+library: $(LIBRARY)
+test: $(TEST_PROGRAM)
+	$(CURDIR)$(TEST_PROGRAM)
+prog: $(PROGRAM)
+
+$(LIBRARY): $(LIBRARY_OBJS)
+	ar r $(LIBRARY) $(LIBRARY_OBJS)
+	ranlib $(LIBRARY)
+$(TEST_PROGRAM): $(TEST_OBJS) $(TEST_LIBS)
+	$(CXX) $(CXXFLAGS) -o $(TEST_PROGRAM) $(TEST_OBJS) $(TEST_LIBS)
+	chmod +x $(TEST_PROGRAM)
+$(PROGRAM): $(PROGRAM_OBJS) $(PROGRAM_LIBS)
+	$(CXX) $(CXXFLAGS) -o $(PROGRAM) $(PROGRAM_OBJS) $(PROGRAM_LIBS)
+	chmod +x $(PROGRAM)
+
+MakeSwitch$(DOTOBJ): MakeSwitch.hpp MakeSwitch.cpp
+	$(CXX) $(CXXFLAGS) -c -o MakeSwitch$(DOTOBJ) MakeSwitch.cpp
+Tester$(DOTOBJ): MakeSwitch.hpp Tester.cpp
+	$(CXX) $(CXXFLAGS) -c -o Tester$(DOTOBJ) Tester.cpp
+Program$(DOTOBJ): MakeSwitch.hpp Program.cpp
+	$(CXX) $(CXXFLAGS) -c -o Program$(DOTOBJ) Program.cpp
+
+clean:
+	rm -f *.o
+	rm -f *.suo
+	rm -f *.sdf
+	rm -f *.user
+	rm -f *.ncb
+	rm -f *.filters
+	rm -fR Debug/
+	rm -fR Release/
+
+extra_clean: clean
+	rm -f *.obj
+	rm -f *.tds
+	rm -f *.lib
+	rm -f lib*.a
+	rm -f *.exe
